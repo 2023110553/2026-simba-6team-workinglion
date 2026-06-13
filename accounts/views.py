@@ -6,8 +6,10 @@ from .models import Profile
 def signup(request):
     if request.method == 'POST':
         if request.POST['password'] == request.POST['confirm']:
+            email_data = request.POST['email']
+            
             newuser = User.objects.create_user(
-                username=request.POST['username'],
+                username=email_data,
                 password=request.POST['password'],
             )
             nickname = request.POST['nickname']
@@ -23,10 +25,10 @@ def signup(request):
 
 def login(request):
     if request.method == 'POST':
-        username = request.POST['username']
+        email_data = request.POST['email']
         password = request.POST['password']
         
-        user = auth.authenticate(request, username=username, password=password)
+        user = auth.authenticate(request, username=email_data, password=password)
         if user is not None:
             auth.login(request, user)
             return redirect('main:onboarding')
