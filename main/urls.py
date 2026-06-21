@@ -17,4 +17,5 @@ urlpatterns = [
     path('create/', create, name='create'),
     path('join_pot_action/', join_pot_action, name='join_pot_action'),
     path('join_pot_action/<int:pot_id>/', join_pot_action, name='join_pot_action'),
+    path('pot/<int:pot_id>/before_photo/', before_photo, name='before_photo'),
 ]

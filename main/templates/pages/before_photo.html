@@ -14,7 +14,7 @@
         <div class="main">
             <div class="header">
                 <div class="back">
-                    <a href="{% url 'main:dashboard' %}">
+                    <a href="{% url 'main:pot_detail' pot.id %}">
                         <div class="back-btn">
                             <svg class="back-text" xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
                                 <path d="M24.1668 14.5L4.8335 14.5M12.0835 21.75L4.8335 14.5L12.0835 7.25" stroke="black" stroke-width="1.625" stroke-linecap="round" stroke-linejoin="round"/>
@@ -61,19 +61,19 @@
                     </div>
                 </div>
                 <div class="body-bottom">
-                    <a href="{% url '' %}">
+                    
                         <button class="gallery">
                             <img src="{% static 'main/img/gallery.png' %}" class="gallery_img" alt="갤러리">
                             <p class="btn-text">갤러리에서 선택</p>
                         </button>
-                    </a>
                     
-                    <a href="{% url '' %}">
+                    
+                   
                         <button class="photo">
                             <img src="{% static 'main/img/camera_icon.png' %}" class="camera_icon_img" alt="카매라 아이콘">
                             <p class="btn-text">카메라로 촬영</p>
                         </button>
-                    </a>
+                    
                 </div>
             </div>
         </div>

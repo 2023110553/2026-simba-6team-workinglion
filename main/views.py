@@ -208,3 +208,11 @@ def avatar_setting(request, pot_id):
         'error': error,
     }
     return render(request, 'pages/avatar_setting.html', context)
+
+def before_photo(request, pot_id):
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+        
+    pot = get_object_or_404(Pot, pk=pot_id)
+    
+    return render(request, 'pages/before_photo.html', {'pot': pot})
