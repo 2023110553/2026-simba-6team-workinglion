@@ -27,7 +27,7 @@
                     <div class="box-list">
                         {% for pot in pots %}
                         <a href="{% url 'main:pot_detail' pot.id %}" 
-                           class="box {% if pot.is_ended or pot.is_completed %}blue-box{% elif pot.is_authenticated_today %}green-box{% else %}pink-box{% endif %}">
+                            class="box {% if pot.is_ended or pot.is_completed %}blue-box{% elif pot.is_authenticated_today %}green-box{% else %}pink-box{% endif %}">
                             <div class="box-left">
                                 <div class="left-text">
                                     <p class="pot-name">{{ pot.pot_name }} 팟</p>
@@ -43,7 +43,13 @@
                             </div>
                             <div class="box-right">
                                 <button class="pot-btn">
-                                    <p class="btn-text2">팟 입장</p> 
+                                    <p class="btn-text2">
+                                        {% if pot.is_ended or pot.is_completed %}
+                                            팟 종료 | 결과보기
+                                        {% else %}
+                                            팟 입장
+                                        {% endif %}
+                                    </p> 
                                 </button>
                             </div>
                         </a>

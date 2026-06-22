@@ -33,12 +33,13 @@ background: #FFF;
     border-color: #000000;
 }
 
-.input-wrapper.is-typing {
-    
+.input-wrapper.is-typing,
+.input-wrapper.is-typing:focus-within {
     border-color: #fe0000;
 }
 
-.input-wrapper.is-success {
+.input-wrapper.is-success,
+.input-wrapper.is-success:focus-within {
     border-color: #0075FF;
 }
 

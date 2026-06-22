@@ -128,6 +128,12 @@
     background: var(--b1, #D6E8FE);
     justify-content: space-between;
 }
+.green-box{
+    border-radius: 20px;
+    border: 1px solid rgba(102, 167, 85, 0.50);
+    background: #CFFFC3;
+    justify-content: space-between;
+}
 
 .box-left {
     display: flex;
@@ -141,7 +147,7 @@
     flex-direction: column;
     align-items: flex-start;
 }
-.pot-name {
+.pink-box .pot-name {
     color: #BC2F70;
     font-family: Inter;
     font-size: 16px;
@@ -159,7 +165,7 @@
     line-height: normal;
     text-align: left;
 }
-.d-day {
+.pink-box .d-day {
     display: flex;
     width: 51px;
     height: 19px;
@@ -171,7 +177,7 @@
     background: #FFEBF3;
 }
 
-.d-day-text {
+.pink-box .d-day-text {
     color: #BC2F70;
     font-family: Inter;
     font-size: 12px;
@@ -179,10 +185,8 @@
     font-weight: 400;
     line-height: normal;
 }
-.box-right{
-    padding-right: 20px;
-}
-.pot-btn {
+
+.pink-box .pot-btn {
     display: flex;
     width: 103px;
     height: 37px;
@@ -196,7 +200,7 @@
     box-shadow: 1px 3px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
-.btn-text2 {
+.pink-box .btn-text2 {
     color: #88174B;
     font-family: Inter;
     font-size: 13px;
@@ -204,7 +208,112 @@
     font-weight: 500;
     line-height: normal;
 }
+.blue-box .pot-name {
+    color: #223F62;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
 
+.blue-box .d-day {
+    display: flex;
+    width: 51px;
+    height: 19px;
+    padding: 2px 7px 2px 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 33.793px;
+    background: #FBFDFF;
+}
+
+.blue-box .d-day-text {
+    color: #223F62;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.blue-box .pot-btn {
+    display: flex;
+    width: 103px;
+    height: 37px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #5B9AE3;
+    background: var(--b3, #7DABE1);
+    box-shadow: 1px 3px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.blue-box .btn-text2 {
+    color: #223F62;
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.green-box .pot-name {
+    color: #478C35;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.green-box .d-day {
+    display: flex;
+    width: 51px;
+    height: 19px;
+    padding: 2px 7px 2px 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 33.793px;
+    background: #F1FFEE;
+}
+
+.green-box .d-day-text {
+    color: #478C35;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.green-box .pot-btn {
+    display: flex;
+    width: 103px;
+    height: 37px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(86, 166, 65, 0.50);
+    background: #6DCE53;
+    box-shadow: 1px 3px 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+.green-box .btn-text2 {
+    color: #2F3E2B;
+    font-family: Inter;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.box-right{
+    padding-right: 20px;
+}
 .plus-btn {
     display: flex;
     width: 45px;
