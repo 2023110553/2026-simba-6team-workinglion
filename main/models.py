@@ -23,3 +23,4 @@ class PotAvatar(models.Model):
     pot = models.ForeignKey(Pot, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     color = models.CharField(max_length=20)
+    item = models.CharField(max_length=20, null=True, blank=True)
