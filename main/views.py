@@ -28,10 +28,6 @@ def pot_detail(request, pot_id):
 
     today = datetime.date.today()
 
-    end_date = pot.start_date + datetime.timedelta(days=pot.days)
-    if today > end_date:
-        return redirect('main:complete', pot_id=pot.id)
-
     if request.method == 'POST':
         
         image = request.FILES.get('image')
@@ -80,13 +76,16 @@ def pot_detail(request, pot_id):
         avatar_item = None
         
         if Proof.objects.filter(
-            pot=pot, user=participant, 
-            auth_date=today
+            pot=pot,
+            user=participant,
+            auth_date=today,
+            is_valid=True,
         ).exists():
             proof = Proof.objects.get(
-                pot=pot, 
-                user=participant, 
+                pot=pot,
+                user=participant,
                 auth_date=today,
+                is_valid=True,
             )
 
         if PotAvatar.objects.filter(pot=pot, user=participant).exists():
@@ -269,28 +268,38 @@ def before_photo(request, pot_id):
         return redirect('accounts:login')
 
     pot = get_object_or_404(Pot, pk=pot_id)
+
+    if not pot.participants.filter(id=request.user.id).exists():
+        return redirect('main:dashboard')
+
     today = datetime.date.today()
-
-    if request.method == 'POST':
-        image = request.FILES.get('image')
-        if image and not Proof.objects.filter(
-            pot=pot, 
-            user=request.user, 
-            auth_date=today
-        ).exists():
-            proof = Proof(pot=pot, user=request.user, image=image)
-            proof.save()
-            
-        return redirect('main:before_photo', pot_id=pot.id)
-
     my_today_proof = None
+
     if Proof.objects.filter(pot=pot, user=request.user, auth_date=today).exists():
         my_today_proof = Proof.objects.get(pot=pot, user=request.user, auth_date=today)
+
+    if request.method == 'POST':
+        if my_today_proof:
+            return redirect('main:pot_detail', pot_id=pot.id)
+
+        image = request.FILES.get('image')
+        if image:
+            proof = Proof(pot=pot, user=request.user, image=image)
+            proof.save()
+            return redirect('main:pot_detail', pot_id=pot.id)
+
+        context = {
+            'pot': pot,
+            'now': today,
+            'my_today_proof': my_today_proof,
+            'error': '인증사진을 선택해주세요.',
+        }
+        return render(request, 'pages/before_photo.html', context)
 
     context = {
         'pot': pot,
         'now': today,
-        'my_today_proof': my_today_proof, 
+        'my_today_proof': my_today_proof,
     }
     return render(request, 'pages/before_photo.html', context)
 
@@ -299,6 +308,10 @@ def after_photo(request, pot_id):
         return redirect('accounts:login')
 
     pot = get_object_or_404(Pot, pk=pot_id)
+
+    if not pot.participants.filter(id=request.user.id).exists():
+        return redirect('main:dashboard')
+
     today = datetime.date.today()
     
     my_today_proof = Proof.objects.filter(pot=pot, user=request.user, auth_date=today).first()
